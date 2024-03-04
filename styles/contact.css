@@ -1,0 +1,28 @@
+/* Contact Information Section */
+.contact-info-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ddd;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Contact Methods */
+  .contact-method {
+    background-color: #ddd;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 10px;
+  }
+  
+  /* Social Media Links Hover Effect */
+  .social-media-link {
+    color: #007BFF;
+    text-decoration: none;
+    margin: 10px;
+}
+  .social-media-link:hover {
+    text-decoration: underline;
+  }

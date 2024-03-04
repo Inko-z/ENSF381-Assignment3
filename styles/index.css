@@ -1,0 +1,47 @@
+.about-us {
+  background-color: #ddd;
+  padding: 20px;
+  margin: 20px;
+  color: #919494; /* Added line to set text color to white */
+}
+
+.shop-now button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.customer-reviews {
+  background-color: #ddd;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #919494; /* Added line to set text color to white */
+}
+
+.customer-reviews h2 {
+  display: block;
+  margin-bottom: 10px; 
+}
+
+.customer-reviews table {
+  width: 100%;
+}
+
+.customer-reviews td {
+  padding: 20px;
+}
+
+.review {
+  border: 1px;
+  border-style: solid;
+  padding: 10px;
+  text-align: center;
+}
+
