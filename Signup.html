@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form - Laflamme Company</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/signup.css">
+    <script src="scripts/signup.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <!-- Logo has been designed by LOGO.com -->
+            <img src="images/mainimage.jpg" alt="Company Logo" width="100">
+        </div>
+        <div class="company-name">
+            Laflamme company
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="login.html" class="nav-link">Login</a>
+    </nav>
+
+    <main>
+        <div class="container">
+            <form id="signupForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+
+                <label for="email">Email ID</label>
+                <input type="text" id="email" class="form-control" placeholder="Enter your email" required>
+
+                <button type="button" class="btn" onclick="validateForm()">Signup</button>
+            </form>
+
+            <a href="#" class="signup-link">Already have an account? Login here</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LaFlamme Company. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>
+
