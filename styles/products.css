@@ -51,4 +51,5 @@
 
 .add-cart:hover {
     background-color: #45A049;
+    cursor: pointer;
 }
