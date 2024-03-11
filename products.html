@@ -7,13 +7,7 @@
     <title>Products - Laflamme Company</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/products.css">
-    <style>
-        /* Add this style to control image size */
-        .product-img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <script src="/scripts/products.js"></script>
 </head>
 
 <body>
@@ -43,7 +37,7 @@
                 <img src="images/Trav2.png" alt="Product 1" class="product-img">
                 <h2 class="product-name">ASTROBOTTOM</h2>
                 <p class="product-price">$99.99</p>
-                <button class="add-cart" onclick="addToCart('Astro Bottom')">Add to Cart</button>
+                <button class="add-cart" onclick="addToCart('ASTROBOTTOM')">Add to Cart</button>
             </div>
 
             <!-- Product 2 -->
@@ -51,7 +45,7 @@
                 <img src="images/Trav3.png" alt="Product 2" class="product-img">
                 <h2 class="product-name">STORMY LIVIN MAJOR</h2>
                 <p class="product-price">$49.99</p>
-                <button class="add-cart" onclick="addToCart('STORMI LIVIN MAJOR')">Add to Cart</button>
+                <button class="add-cart" onclick="addToCart('STORMY LIVIN MAJOR')">Add to Cart</button>
             </div>
 
             <!-- Product 3 -->
@@ -65,7 +59,7 @@
             <!-- Product 4 -->
             <div class="product">
                 <img src="images/Mask.png" alt="Product 4" class="product-img">
-                <h2 class="product-name">ITS LITT!!!!!!!!!!!!!!</h2>
+                <h2 class="product-name">ITS LITT</h2>
                 <p class="product-price">$24.99</p>
                 <button class="add-cart" onclick="addToCart('ITS LITT')">Add to Cart</button>
             </div>
@@ -94,10 +88,17 @@
 
             <div class="product">
                 <img src="images/kawaiidrake.png" alt="Product 8" class="product-img">
-                <h2 class="product-name">"Nya!!"</h2>
+                <h2 class="product-name">Nya!!</h2>
                 <p class="product-price">$69.99</p>
                 <button class="add-cart" onclick="addToCart('Nya!!')">Add to Cart</button>
             </div>
+
+        </section>
+        <section class="shopping-cart">
+            <h2 class="shopping-cart-tittle">Shopping Cart</h2>
+            <ul class="shopping-cart-list">
+
+            </ul>
 
         </section>
     </main>

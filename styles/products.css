@@ -1,3 +1,6 @@
+main{
+    background-color: #ddd;
+}
 .product-page {
     background-color: #ddd;
     margin: 20px;
@@ -47,6 +50,14 @@
     margin: 5px; 
     border: none;
     color: white;
+}
+.shopping-cart-list{
+    color: black;
+    list-style-type: none;
+}
+.shopping-cart-tittle {
+    font-size: 30px; 
+    color: #001f3f;
 }
 
 .add-cart:hover {
