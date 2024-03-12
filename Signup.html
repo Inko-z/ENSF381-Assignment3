@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Form - Laflamme Company</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/login.css"> <!-- Link to the login.css file -->
+    <link rel="stylesheet" href="styles/login.css">
 </head>
 
 <body>
     <header class="header">
         <div class="logo">
-            <!-- Logo has been designed by LOGO.com -->
             <img src="images/mainimage.jpg" alt="Company Logo" width="100">
         </div>
         <div class="company-name">
@@ -26,27 +25,28 @@
         <a href="contact.html" class="nav-link">Contact</a>
         <a href="login.html" class="nav-link">Login</a>
     </nav>
+
     <main id="signup-page">
         <section class="signup">
-                <form onSubmit="signupClick(event)">
-                    <div>
-                            <label for="username" class="label">Username:</label>
-                            <input type="text" id="username" name="username" placeholder="Enter your username" required>
-                    </div>
-                    <div>
-                            <label for="password" class="label">Password:</label>
-                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                    </div>
-                    <div>
-                        <label for="confirmpassword" class="label">Confirm Password:</label>
-                        <input type="confirmpassword" id="confirmpassword" name="confirmpassword" placeholder="Reenter your password" required>
-                    </div>
-                    <div>
-                        <label for="email" class="label">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-                        <button type="signup" class="signupbutton" onclick="checkInput()">Signup</button>
-                    </div>
-                </form>
+            <form onsubmit="handleSignup(event)">
+                <div>
+                    <label for="new-username" class="label">Username:</label>
+                    <input type="text" id="new-username" name="new-username" placeholder="Enter your username" required>
+                </div>
+                <div>
+                    <label for="new-password" class="label">Password:</label>
+                    <input type="password" id="new-password" name="new-password" placeholder="Enter your password" required>
+                </div>
+                <div>
+                    <label for="confirm-password" class="label">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Reenter your password" required>
+                </div>
+                <div>
+                    <label for="new-email" class="label">Email:</label>
+                    <input type="email" id="new-email" name="new-email" placeholder="Enter your email address" required>
+                    <button type="submit" class="signupbutton" onclick="validateAndSignup()">Signup</button>
+                </div>
+            </form>
         </section>
     </main>
 
@@ -55,92 +55,128 @@
     </footer>
 
     <script>
-        function signupClick(event) {
+        function handleSignup(event) {
             event.preventDefault();
         }
-    
+
         const errorMessages = [];
-    
+
         var checkSpecial = /[_|?`~\/!@#$%\^&*()\-=+/[\]{};:'",.<>]/;
         var validEmail = /[]/;
         var validUsername = /^[\w\-]+$/;
         var validPassword = /^[0-9a-zA-Z_|?`~\/!@#$%\^&*()\-=+/[\]{};:'",.<>]+$/;
         var checkAlphabet = /[a-zA-Z]/;
         var checkDigit = /[0-9]/;
-    
-        function checkUsername() {
-            var username = document.getElementById("username").value;
-            if (username.length > 20 & username.length < 3) {
+
+        function validateAndSignup() {
+            var messages = document.getElementById("signup-message");
+            if (messages) {
+                messages.remove();
+            }
+            errorMessages.length = 0;
+
+            var section = document.createElement("div");
+            section.id = "signup-message";
+            section.style.backgroundColor = "#f9f9f9";
+            section.style.padding = "10px";
+            section.style.margin = "20px";
+            section.style.border = "2px";
+            section.style.color = "#333";
+            signupPage = document.getElementById("signup-page");
+
+            validateUsername();
+            validatePassword();
+            validateConfirmPassword();
+            validateEmail();
+
+            if (errorMessages.length !== 0) {
+                for (var i = 0; i < errorMessages.length; i++) {
+                    var para = document.createElement("p");
+                    para.textContent = errorMessages[i];
+                    para.style.textAlign = "left";
+                    section.appendChild(para);
+                }
+                signupPage.appendChild(section);
+            } else {
+                var para = document.createElement("p");
+                para.textContent = "Signup Successful!";
+                para.style.textAlign = "left";
+                section.appendChild(para);
+                signupPage.appendChild(section);
+            }
+        }
+
+        function validateUsername() {
+            var newUsername = document.getElementById("new-username").value;
+            if (newUsername.length > 20 & newUsername.length < 3) {
                 errorMessages.push("Username must be between 3 and 20 characters long.");
             }
-            if (!(username[0] >= "a" && username[0] <= "z") && !(username[0] >= "A" && username[0] <= "Z")) {
+            if (!(newUsername[0] >= "a" && newUsername[0] <= "z") && !(newUsername[0] >= "A" && newUsername[0] <= "Z")) {
                 errorMessages.push("Username must start with a letter.");
             }
-            if (!(validUsername.test(username))) {
+            if (!(validUsername.test(newUsername))) {
                 errorMessages.push("Username can only contain alphanumeric characters (a-z, A-Z, 0-9), underscores, and dashes.");
             }
         }
-    
-        function checkPassword() {
-            let password = document.getElementById("password").value;
-            if (password.length < 8) {
+
+        function validatePassword() {
+            let newPassword = document.getElementById("new-password").value;
+            if (newPassword.length < 8) {
                 errorMessages.push("Password must be 8 characters or longer.");
                 return;
             }
-            if (/\s/.test(password)) {
+            if (/\s/.test(newPassword)) {
                 errorMessages.push("Password cannot contain spaces.");
                 return;
             }
-            if (!(validPassword.test(password))) {
+            if (!(validPassword.test(newPassword))) {
                 errorMessages.push("Password must contain valid characters.");
                 return;
             }
-            if (!(checkAlphabet.test(password))) {
+            if (!(checkAlphabet.test(newPassword))) {
                 errorMessages.push("Password must contain a character from a-z, A-Z");
                 return;
             }
-            if (!(checkDigit.test(password))) {
+            if (!(checkDigit.test(newPassword))) {
                 errorMessages.push("Password must contain a digit from 0-9");
                 return;
             }
-            if (!(checkSpecial.test(password))) {
+            if (!(checkSpecial.test(newPassword))) {
                 errorMessages.push("Password must contain a special character from |?`~/!@#$%^&*()-=+[]{};:'\",.<>.");
                 return;
             }
         }
-    
-        function confirmPassword() {
-            let password = document.getElementById("password").value;
-            var confirmPassword = document.getElementById("confirmpassword").value;
-    
-            if (password !== confirmPassword) {
+
+        function validateConfirmPassword() {
+            let newPassword = document.getElementById("new-password").value;
+            var confirmNewPassword = document.getElementById("confirm-password").value;
+
+            if (newPassword !== confirmNewPassword) {
                 errorMessages.push("Password does not match.");
             }
             return;
         }
-    
+
         var domainNames = [".com", ".io", ".net"];
-    
-        function checkEmail() {
-            email = document.getElementById("email").value;
-            if (/\s/.test(email)) {
+
+        function validateEmail() {
+            var newEmail = document.getElementById("new-email").value;
+            if (/\s/.test(newEmail)) {
                 errorMessages.push("Email address cannot contain spaces.");
                 return;
             }
-    
-            let j = email.length;
-            while (email[j] !== "." && j > 0) {
-                console.log(email[j]);
+
+            let j = newEmail.length;
+            while (newEmail[j] !== "." && j > 0) {
                 j--;
             }
             if (j == 0) {
                 errorMessages.push("Email address must be in a valid format (ex. example@email.com).");
                 return;
             }
-            let domain = email.slice(j, email.length);
-            console.log(domain);
-    
-            if (email.indexOf('@') <= 0 || !(domainNames.includes(domain))) {
+            let domain = newEmail.slice(j, newEmail.length);
+
+            if (newEmail.indexOf('@') <= 0 || !(domainNames.includes(domain))) {
                 errorMessages.push("Email address must be in a valid format (ex. example@email.com).")
                 return;
             }
@@ -152,47 +188,10 @@
             errorMessages.push("Email address must have a valid domain name.");
             return;
         }
-    
-        function checkInput() {
-            var messages = document.getElementById("signup-message")
-            if (messages) {
-                messages.remove();
-            }
-            errorMessages.length = 0;
-    
-            var section = document.createElement("div");
-            section.id = "signup-message";
-            section.style.backgroundColor = "#f9f9f9";
-            section.style.padding = "10px";
-            section.style.margin = "20px";
-            section.style.border = "2px";
-            section.style.color = "#333";
-            signupPage = document.getElementById("signup-page");
-    
-            checkUsername();
-            checkPassword();
-            confirmPassword();
-            checkEmail();
-    
-            if (errorMessages.length !== 0) {
-                for (var i = 0; i < errorMessages.length; i++) {
-                    var para = document.createElement("p");
-                    para.textContent = errorMessages[i];
-                    para.style.textAlign = "left"; // Align the messages to the left
-                    section.appendChild(para);
-                }
-                signupPage.appendChild(section);
-            } else {
-                var para = document.createElement("p");
-                para.textContent = "Signup Successful!";
-                para.style.textAlign = "left"; // Align the success message to the left
-                section.appendChild(para);
-                signupPage.appendChild(section);
-            }
-        }
     </script>
-        </body>
+</body>
 
 </html>
+
 
 
